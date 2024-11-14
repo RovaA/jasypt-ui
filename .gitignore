@@ -1,3 +1,6 @@
+# General
+target/
+
 # Compiled class file
 *.class
 
