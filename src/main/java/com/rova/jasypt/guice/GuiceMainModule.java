@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.rova.jasypt.guice;
 
 import com.google.inject.AbstractModule;
-import com.rova.jasypt.EncryptiontabController;
-import com.rova.jasypt.MainController;
+import com.rova.jasypt.controllers.EncryptiontabController;
+import com.rova.jasypt.controllers.MainController;
 import com.rova.jasypt.services.JasyptService;
 import com.rova.jasypt.services.JasyptServiceImpl;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
