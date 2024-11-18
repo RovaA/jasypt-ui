@@ -53,17 +53,17 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>0.0.5</version>
                 <configuration>
                     <mainClass>com.rova.jasypt.App</mainClass>
-                    <arguments>
-                        <argument>--add-exports org.jasypt/org.jasypt.encryption.pbe=com.rova.jasypt</argument>
-                    </arguments>
+                    <jlinkImageName>jasypt-ui</jlinkImageName>
+                    <jlinkZipName>jasypt-ui</jlinkZipName>
+                    <launcher>jasypt</launcher>
                 </configuration>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running -->
-                        <!-- Usage: mvn clean javafx:run -->
+<!--                         Default configuration for running 
+                         Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                     </execution>
                 </executions>

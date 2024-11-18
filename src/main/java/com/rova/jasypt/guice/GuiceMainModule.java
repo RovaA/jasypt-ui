@@ -5,7 +5,6 @@ import com.rova.jasypt.controllers.EncryptiontabController;
 import com.rova.jasypt.controllers.MainController;
 import com.rova.jasypt.services.JasyptService;
 import com.rova.jasypt.services.JasyptServiceImpl;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 /**
  *
@@ -17,8 +16,6 @@ public class GuiceMainModule extends AbstractModule {
     protected void configure() {
         bind(MainController.class);
         bind(EncryptiontabController.class);
-        
-        bind(StandardPBEStringEncryptor.class);
         
         bind(JasyptService.class).to(JasyptServiceImpl.class);
     }

@@ -1,4 +1,5 @@
 module com.rova.jasypt {
+    requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;
@@ -6,7 +7,7 @@ module com.rova.jasypt {
     requires jasypt;
 
     opens com.rova.jasypt.controllers to javafx.fxml, com.google.guice;
+    opens com.rova.jasypt.services to jasypt, com.google.guice;
     
     exports com.rova.jasypt;
-    exports com.rova.jasypt.services to com.google.guice;
 }

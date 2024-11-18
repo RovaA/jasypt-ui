@@ -53,7 +53,7 @@ public class EncryptiontabController implements Initializable {
         Data data = new Data();
         data.setInput(inputTextField.getText());
         data.setPassword(passwordTextField.getText());
-        data.setAlgorithm(algorithmChoiceBox.getValue().toString());
+        data.setAlgorithm(algorithmChoiceBox.getValue());
         resultTextArea.setText(jasyptService.encrypt(data));
     }
 

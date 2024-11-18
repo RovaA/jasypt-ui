@@ -13,8 +13,8 @@ public class JasyptServiceImpl implements JasyptService {
     public String encrypt(Data data) {
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(data.getPassword());
-        encryptor.setAlgorithm(data.getAlgorithm());
-        if ("PBEWithHMACSHA512AndAES_256".equalsIgnoreCase(data.getAlgorithm())) {
+        encryptor.setAlgorithm(data.getAlgorithm().toString());
+        if (JasyptAlgorithm.PBEWithHMACSHA512AndAES_256 == data.getAlgorithm()) {
             encryptor.setIvGenerator(new RandomIvGenerator());
         }
         return encryptor.encrypt(data.getInput());
@@ -24,8 +24,8 @@ public class JasyptServiceImpl implements JasyptService {
     public String decrypt(Data data) {
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setPassword(data.getPassword());
-        encryptor.setAlgorithm(data.getAlgorithm());
-        if ("PBEWithHMACSHA512AndAES_256".equalsIgnoreCase(data.getAlgorithm())) {
+        encryptor.setAlgorithm(data.getAlgorithm().toString());
+        if (JasyptAlgorithm.PBEWithHMACSHA512AndAES_256 == data.getAlgorithm()) {
             encryptor.setIvGenerator(new RandomIvGenerator());
         }
         return encryptor.decrypt(data.getInput());

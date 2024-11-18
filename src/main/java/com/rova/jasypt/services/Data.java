@@ -10,7 +10,7 @@ public class Data {
     
     private String password;
     
-    private String algorithm;
+    private JasyptAlgorithm algorithm;
 
     public String getInput() {
         return input;
@@ -28,11 +28,11 @@ public class Data {
         this.password = password;
     }
 
-    public String getAlgorithm() {
+    public JasyptAlgorithm getAlgorithm() {
         return algorithm;
     }
 
-    public void setAlgorithm(String algorithm) {
+    public void setAlgorithm(JasyptAlgorithm algorithm) {
         this.algorithm = algorithm;
     }
     
