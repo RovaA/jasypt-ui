@@ -25,8 +25,8 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Input" />
-                              <TextField fx:id="inputTextField" prefWidth="300.0" />
+                              <Label text="Message" />
+                              <TextField fx:id="inputTextField" prefWidth="300.0" promptText="Enter message here..." />
                            </children>
                         </VBox>
                      </children>
@@ -39,7 +39,7 @@
                         <VBox>
                            <children>
                               <Label text="Password" />
-                              <TextField fx:id="passwordTextField" prefWidth="300.0">
+                              <TextField fx:id="passwordTextField" prefWidth="300.0" promptText="Enter password here...">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -74,7 +74,10 @@
             </HBox>
             <HBox GridPane.rowIndex="1">
                <children>
-                  <TextArea fx:id="resultTextArea" editable="false" prefHeight="78.0" prefWidth="257.0" promptText="Result" wrapText="true" />
+                  <TextArea fx:id="resultTextArea" editable="false" prefHeight="78.0" prefWidth="252.0" promptText="Result" wrapText="true">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></TextArea>
                   <Button fx:id="copyButton" mnemonicParsing="false" onAction="#onCopyResult" text="Copy" />
                </children>
                <GridPane.margin>
