@@ -74,7 +74,8 @@
             </HBox>
             <HBox GridPane.rowIndex="1">
                <children>
-                  <TextArea fx:id="resultTextArea" editable="false" prefHeight="200.0" prefWidth="300.0" promptText="Result" />
+                  <TextArea fx:id="resultTextArea" editable="false" prefHeight="78.0" prefWidth="257.0" promptText="Result" wrapText="true" />
+                  <Button fx:id="copyButton" mnemonicParsing="false" onAction="#onCopyResult" text="Copy" />
                </children>
                <GridPane.margin>
                   <Insets top="15.0" />

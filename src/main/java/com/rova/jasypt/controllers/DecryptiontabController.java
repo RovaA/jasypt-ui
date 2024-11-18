@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 
 /**
  * FXML Controller class
@@ -47,6 +49,14 @@ public class DecryptiontabController implements Initializable {
         ObservableList<JasyptAlgorithm> items = FXCollections.observableArrayList(Arrays.asList(JasyptAlgorithm.values()));
         algorithmChoiceBox.setItems(items);
         algorithmChoiceBox.setValue(JasyptAlgorithm.PBEWithHMACSHA512AndAES_256);
+    }
+
+    @FXML
+    private void onCopyResult(ActionEvent event) {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(resultTextArea.getText());
+        clipboard.setContent(content);
     }
 
     @FXML

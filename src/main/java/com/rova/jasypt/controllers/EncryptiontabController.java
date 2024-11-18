@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 
 /**
  * FXML Controller class
@@ -37,6 +39,8 @@ public class EncryptiontabController implements Initializable {
 
     @Inject
     private JasyptService jasyptService;
+    
+    private final JasyptAlgorithm DEFAULT_ALGORITHM = JasyptAlgorithm.PBEWithHMACSHA512AndAES_256;
 
     /**
      * Initializes the controller class.
@@ -45,7 +49,15 @@ public class EncryptiontabController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<JasyptAlgorithm> items = FXCollections.observableArrayList(Arrays.asList(JasyptAlgorithm.values()));
         algorithmChoiceBox.setItems(items);
-        algorithmChoiceBox.setValue(JasyptAlgorithm.PBEWithHMACSHA512AndAES_256);
+        algorithmChoiceBox.setValue(DEFAULT_ALGORITHM);
+    }
+
+    @FXML
+    private void onCopyResult(ActionEvent event) {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(resultTextArea.getText());
+        clipboard.setContent(content);
     }
 
     @FXML
@@ -55,6 +67,14 @@ public class EncryptiontabController implements Initializable {
         data.setPassword(passwordTextField.getText());
         data.setAlgorithm(algorithmChoiceBox.getValue());
         resultTextArea.setText(jasyptService.encrypt(data));
+    }
+
+    @FXML
+    private void onClear(ActionEvent event) {
+        inputTextField.clear();
+        passwordTextField.clear();
+        resultTextArea.clear();
+        algorithmChoiceBox.setValue(DEFAULT_ALGORITHM);
     }
 
 }
