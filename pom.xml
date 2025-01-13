@@ -6,8 +6,11 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <!--<maven.compiler.source>21</maven.compiler.source>-->
+        <!--<maven.compiler.target>21</maven.compiler.target>-->
+        
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         
         <guice.version>7.0.0</guice.version>
         <jasypt.version>1.9.3</jasypt.version>
@@ -47,7 +50,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>11</release>
+                    <!--<release>21</release>-->
+                    <excludes>
+                        <exclude>module-info.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -62,12 +68,34 @@
                 </configuration>
                 <executions>
                     <execution>
-<!--                         Default configuration for running 
-                         Usage: mvn clean javafx:run -->
+                        <!--                         Default configuration for running 
+                        Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.rova.jasypt.App</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin> 
         </plugins>
     </build>
 </project>
