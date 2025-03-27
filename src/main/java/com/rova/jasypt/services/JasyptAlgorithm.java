@@ -7,7 +7,8 @@ package com.rova.jasypt.services;
 public enum JasyptAlgorithm {
     
     PBEWithHMACSHA512AndAES_256("PBEWithHMACSHA512AndAES_256"),
-    PBEWithMD5AndTripleDES("PBEWithMD5AndTripleDES");
+    PBEWithMD5AndTripleDES("PBEWithMD5AndTripleDES"),
+    PBEWITHMD5ANDDES("PBEWITHMD5ANDDES");
     
     private final String value;
     
