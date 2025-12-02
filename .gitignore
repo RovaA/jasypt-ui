@@ -1,8 +1,11 @@
 # General
 target/
+.vscode/
+META-INF/
 
 # Compiled class file
 *.class
+dependency-reduced-pom.xml
 
 # Log file
 *.log
