@@ -39,7 +39,7 @@ public class EncryptiontabController implements Initializable {
 
     @Inject
     private JasyptService jasyptService;
-    
+
     private final JasyptAlgorithm DEFAULT_ALGORITHM = JasyptAlgorithm.PBEWithHMACSHA512AndAES_256;
 
     /**
@@ -47,7 +47,8 @@ public class EncryptiontabController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<JasyptAlgorithm> items = FXCollections.observableArrayList(Arrays.asList(JasyptAlgorithm.values()));
+        ObservableList<JasyptAlgorithm> items = FXCollections
+                .observableArrayList(Arrays.asList(JasyptAlgorithm.values()));
         algorithmChoiceBox.setItems(items);
         algorithmChoiceBox.setValue(DEFAULT_ALGORITHM);
     }
@@ -62,10 +63,7 @@ public class EncryptiontabController implements Initializable {
 
     @FXML
     private void onEncrypt(ActionEvent event) {
-        Data data = new Data();
-        data.setInput(inputTextField.getText());
-        data.setPassword(passwordTextField.getText());
-        data.setAlgorithm(algorithmChoiceBox.getValue());
+        var data = new Data(inputTextField.getText(), passwordTextField.getText(), algorithmChoiceBox.getValue());
         resultTextArea.setText(jasyptService.encrypt(data));
     }
 

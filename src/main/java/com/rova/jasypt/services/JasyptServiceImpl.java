@@ -11,24 +11,24 @@ public class JasyptServiceImpl implements JasyptService {
 
     @Override
     public String encrypt(Data data) {
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        encryptor.setPassword(data.getPassword());
-        encryptor.setAlgorithm(data.getAlgorithm().toString());
-        if (JasyptAlgorithm.PBEWithHMACSHA512AndAES_256 == data.getAlgorithm()) {
-            encryptor.setIvGenerator(new RandomIvGenerator());
-        }
-        return encryptor.encrypt(data.getInput());
+        var encryptor = getEncryptor(data);
+        return encryptor.encrypt(data.input());
     }
 
     @Override
     public String decrypt(Data data) {
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        encryptor.setPassword(data.getPassword());
-        encryptor.setAlgorithm(data.getAlgorithm().toString());
-        if (JasyptAlgorithm.PBEWithHMACSHA512AndAES_256 == data.getAlgorithm()) {
+        var encryptor = getEncryptor(data);
+        return encryptor.decrypt(data.input());
+    }
+
+    private StandardPBEStringEncryptor getEncryptor(Data data) {
+        var encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword(data.password());
+        encryptor.setAlgorithm(data.algorithm().toString());
+        if (JasyptAlgorithm.PBEWithHMACSHA512AndAES_256 == data.algorithm()) {
             encryptor.setIvGenerator(new RandomIvGenerator());
         }
-        return encryptor.decrypt(data.getInput());
+        return encryptor;
     }
 
 }

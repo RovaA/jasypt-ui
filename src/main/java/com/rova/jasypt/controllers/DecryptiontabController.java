@@ -28,13 +28,13 @@ public class DecryptiontabController implements Initializable {
 
     @FXML
     private TextField inputTextField;
-    
+
     @FXML
     private TextField passwordTextField;
-    
+
     @FXML
     private ChoiceBox<JasyptAlgorithm> algorithmChoiceBox;
-    
+
     @FXML
     private TextArea resultTextArea;
 
@@ -46,7 +46,8 @@ public class DecryptiontabController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<JasyptAlgorithm> items = FXCollections.observableArrayList(Arrays.asList(JasyptAlgorithm.values()));
+        ObservableList<JasyptAlgorithm> items = FXCollections
+                .observableArrayList(Arrays.asList(JasyptAlgorithm.values()));
         algorithmChoiceBox.setItems(items);
         algorithmChoiceBox.setValue(JasyptAlgorithm.PBEWithHMACSHA512AndAES_256);
     }
@@ -61,10 +62,7 @@ public class DecryptiontabController implements Initializable {
 
     @FXML
     private void onDecrypt(ActionEvent event) {
-        Data data = new Data();
-        data.setInput(inputTextField.getText());
-        data.setPassword(passwordTextField.getText());
-        data.setAlgorithm(algorithmChoiceBox.getValue());
+        var data = new Data(inputTextField.getText(), passwordTextField.getText(), algorithmChoiceBox.getValue());
         resultTextArea.setText(jasyptService.decrypt(data));
     }
 
