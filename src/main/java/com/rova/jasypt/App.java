@@ -21,17 +21,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("main"), 330, 380);
+        scene = new Scene(loadFXML("main"));
+        stage.setMinHeight(600);
         stage.setScene(scene);
-        stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        
+
         Injector injector = Guice.createInjector(new GuiceMainModule());
-        
+
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         fxmlLoader.setControllerFactory(new ControllerFactory(injector));
         return fxmlLoader.load();
@@ -40,9 +40,9 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
+
     public static class ControllerFactory implements Callback<Class<?>, Object> {
-        
+
         private final Injector injector;
 
         private ControllerFactory(Injector injector) {

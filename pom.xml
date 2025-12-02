@@ -6,34 +6,19 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<maven.compiler.source>21</maven.compiler.source>-->
-        <!--<maven.compiler.target>21</maven.compiler.target>-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        
-        <guice.version>7.0.0</guice.version>
+        <guice.version>5.1.0</guice.version> <!-- Downgraded Guice for Java 8 compatibility if needed, checking 7.0.0 compatibility later, but 5.1.0 is safer for 8 -->
         <jasypt.version>1.9.3</jasypt.version>
     </properties>
     <dependencies>
-        
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>13</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>13</version>
-        </dependency>
+        <!-- JavaFX is included in JDK 8, so no explicit dependencies needed -->
         
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>${guice.version}</version>
-            <type>jar</type>
         </dependency>
         
         <dependency>
@@ -50,29 +35,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <!--<release>21</release>-->
-                    <excludes>
-                        <exclude>module-info.java</exclude>
-                    </excludes>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.5</version>
-                <configuration>
-                    <mainClass>com.rova.jasypt.App</mainClass>
-                    <jlinkImageName>jasypt-ui</jlinkImageName>
-                    <jlinkZipName>jasypt-ui</jlinkZipName>
-                    <launcher>jasypt</launcher>
-                </configuration>
-                <executions>
-                    <execution>
-                        <!--                         Default configuration for running 
-                        Usage: mvn clean javafx:run -->
-                        <id>default-cli</id>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
