@@ -22,6 +22,16 @@
                    <fx:include source="decryptiontab.fxml" />
               </content>
             </Tab>
+            <Tab closable="false" text="Multi-field Encryption">
+              <content>
+                   <fx:include source="multiencryptiontab.fxml" />
+              </content>
+            </Tab>
+            <Tab closable="false" text="Multi-field Decryption">
+              <content>
+                   <fx:include source="multidecryptiontab.fxml" />
+              </content>
+            </Tab>
          </tabs>
       </TabPane>
    </center>

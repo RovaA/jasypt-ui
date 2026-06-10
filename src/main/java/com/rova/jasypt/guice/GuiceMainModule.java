@@ -3,6 +3,8 @@ package com.rova.jasypt.guice;
 import com.google.inject.AbstractModule;
 import com.rova.jasypt.controllers.EncryptiontabController;
 import com.rova.jasypt.controllers.MainController;
+import com.rova.jasypt.controllers.MultiDecryptionTabController;
+import com.rova.jasypt.controllers.MultiEncryptionTabController;
 import com.rova.jasypt.services.JasyptService;
 import com.rova.jasypt.services.JasyptServiceImpl;
 
@@ -16,6 +18,8 @@ public class GuiceMainModule extends AbstractModule {
     protected void configure() {
         bind(MainController.class);
         bind(EncryptiontabController.class);
+        bind(MultiEncryptionTabController.class);
+        bind(MultiDecryptionTabController.class);
         
         bind(JasyptService.class).to(JasyptServiceImpl.class);
     }
